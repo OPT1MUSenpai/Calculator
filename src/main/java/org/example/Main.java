@@ -1,19 +1,78 @@
 package org.example;
+import javafx.util.Pair;
+import java.util.*;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome Darpan!");
+    public double myAdd(double a, double b){
+        return a+b;
+    }
+    public double mySubs(double a, double b){
+        return a-b;
+    }
+    public double myMult(double a, double b){
+        return a*b;
+    }
+    public Pair<Boolean, Double> myDivi(double a, double b){
+        if(b == 0){
+            return new Pair<Boolean, Double>(false,-1.0);
+        }
+        return new Pair<Boolean, Double>(true, (a/b));
+    }
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-//        for (int i = 1; i <= 5; i++) {
-//
-//            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-//            // for you, but you can always add more by pressing Ctrl+F8.
-//            System.out.print("i = " + i);
-//        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to my Calculator");
+        Main calc = new Main();
+
+        int choice = 5;
+        do {
+            System.out.println(" 1. Addition ");
+            System.out.println(" 2. Subtraction ");
+            System.out.println(" 3. Multiplication ");
+            System.out.println(" 4. Division ");
+            System.out.println(" 5. EXIT ");
+            System.out.print(" Enter your Choice : " );
+            choice = sc.nextInt();
+            double a,b;
+            switch(choice){
+                case 1 :
+                    System.out.print(" Enter two numbers : " );
+                    a = sc.nextDouble();
+                    b = sc.nextDouble();
+                    System.out.println(" Ans : "+calc.myAdd(a,b));
+                    break;
+                case 2 :
+                    System.out.print(" Enter two numbers : " );
+                    a = sc.nextDouble();
+                    b = sc.nextDouble();
+                    System.out.println(" Ans : "+calc.mySubs(a,b));
+                    break;
+                case 3 :
+                    System.out.print(" Enter two numbers : " );
+                    a = sc.nextDouble();
+                    b = sc.nextDouble();
+                    System.out.println(" Ans : "+calc.myMult(a,b));
+                    break;
+                case 4 :
+                    System.out.print(" Enter two numbers : " );
+                    a = sc.nextDouble();
+                    b = sc.nextDouble();
+                    Pair<Boolean, Double > ans = calc.myDivi(a, b);
+                    if(!ans.getKey()) {
+                        System.out.println("Division by 0 encountered!");
+                    }
+                    else {
+                        System.out.println(" Ans : " + ans.getValue());
+                    }
+                    break;
+                case 5 :
+                    System.out.print("Exit Initiated!" );
+                    break;
+                default:
+                    System.out.println("Invalid Choice");
+            }
+            System.out.println();
+        } while(choice != 5);
+        sc.close();
     }
 }
