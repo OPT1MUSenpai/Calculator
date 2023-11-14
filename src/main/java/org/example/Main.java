@@ -23,7 +23,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to my Calculator");
         Main calc = new Main();
-        
 
         int choice = 5;
         do {
